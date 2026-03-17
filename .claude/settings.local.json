@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"c:/luis/projects/app-presenca-assembleia-2026/src/middleware.ts\" \"c:/luis/projects/app-presenca-assembleia-2026/src/proxy.ts\")",
+      "Bash(rm \"c:/luis/projects/app-presenca-assembleia-2026/src/middleware.ts\")",
+      "Bash(ls \"/c/luis/projects/app-presenca-assembleia-2026/src/app/\\(authenticated\\)/dashboard/\")",
+      "Bash(find /c/luis/projects/app-presenca-assembleia-2026/src -type f -name *.ts -o -name *.tsx -o -name *.json -o -name *.css)",
+      "Bash(wc -l c:/luis/projects/app-presenca-assembleia-2026/src/app/page.tsx c:/luis/projects/app-presenca-assembleia-2026/src/app/\\\\\\(authenticated\\\\\\)/dashboard/page.tsx c:/luis/projects/app-presenca-assembleia-2026/src/app/\\\\\\(authenticated\\\\\\)/dashboard/convidados/page.tsx c:/luis/projects/app-presenca-assembleia-2026/src/app/\\\\\\(authenticated\\\\\\)/dashboard/convidados/importar/page.tsx c:/luis/projects/app-presenca-assembleia-2026/src/app/\\\\\\(authenticated\\\\\\)/dashboard/checkins/page.tsx)",
+      "Bash(ls \"c:/luis/projects/app-presenca-assembleia-2026/src/app/\\(authenticated\\)/dashboard/\")",
+      "Bash(npx skills:*)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"admin dashboard SaaS attendance management modern minimal\" --design-system -p \"Presença Assembleia 2026\" -f markdown)",
+      "Bash(python3 .claude/skills/ui-ux-pro-max/scripts/search.py \"admin dashboard SaaS attendance management modern minimal\" --design-system -p \"Presença Assembleia 2026\" -f markdown)",
+      "Bash(/tmp/check_features.sh:*)",
+      "Bash(bash /tmp/check_features.sh)",
+      "Bash(/tmp/comprehensive_report.txt:*)",
+      "Bash(cat:*)",
+      "Bash(ls /c/luis/projects/app-presenca-assembleia-2026/src/app/\\\\\\(authenticated\\\\\\)/)",
+      "Bash(pnpm drizzle-kit:*)",
+      "Bash(printf '\\\\n')"
+    ],
+    "additionalDirectories": [
+      "c:\\luis\\projects\\app-presenca-assembleia-2026\\src\\app\\api\\admin\\presences\\guests",
+      "c:\\luis\\projects\\app-presenca-assembleia-2026\\src\\app\\(authenticated)\\checkin\\[eventId]",
+      "\\tmp"
+    ]
+  }
+}
