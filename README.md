@@ -40,6 +40,7 @@ Aplicação de controle de presença para assembleias, com suporte a múltiplos 
 
 3. Execute as migrações e o seed inicial:
    ```bash
+   pnpm db:generate
    pnpm db:migrate
    pnpm db:seed
    ```
