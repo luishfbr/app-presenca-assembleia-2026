@@ -1,7 +1,7 @@
 "use client";
 
 import { Controller, useForm } from "react-hook-form";
-import { Field, FieldLabel, FieldDescription } from "../ui/field";
+import { Field, FieldLabel, FieldError } from "../ui/field";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
@@ -73,9 +73,9 @@ export const LoginForm = () => {
                   id="username-form"
                 />
                 {fieldState.error && (
-                  <FieldDescription>
+                  <FieldError>
                     {fieldState.error.message}
-                  </FieldDescription>
+                  </FieldError>
                 )}
               </Field>
             )}
@@ -95,9 +95,9 @@ export const LoginForm = () => {
                   id="password-form"
                 />
                 {fieldState.error && (
-                  <FieldDescription>
+                  <FieldError>
                     {fieldState.error.message}
-                  </FieldDescription>
+                  </FieldError>
                 )}
               </Field>
             )}

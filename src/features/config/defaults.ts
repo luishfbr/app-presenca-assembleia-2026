@@ -11,7 +11,7 @@ export const CONFIG_DEFAULTS = {
     "Nenhum convidado encontrado com este CPF para este evento.",
   autoResetSeconds: 8,
   backgroundImageUrl: "/images/checkin-bg.png",
-  loadingImageUrl: "/images/soccer-ball-loader.png",
+  loadingImageUrl: "/loading.png",
 } as const;
 
 export function resolveConfig(config: SiteConfig | null) {

@@ -1,5 +1,3 @@
-"use server";
-
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { DashboardHeader } from "@/components/layout/dashboard-header";
 import { DashboardInset } from "@/components/layout/dashboard-inset";

@@ -51,9 +51,10 @@ export async function POST(req: NextRequest) {
     const dbField =
       field === "background" ? "backgroundImageUrl" : "loadingImageUrl";
 
+    const now = new Date();
     await db
       .insert(siteConfig)
-      .values({ id: "default", [dbField]: url })
+      .values({ id: "default", [dbField]: url, createdAt: now, updatedAt: now })
       .onConflictDoUpdate({
         target: siteConfig.id,
         set: { [dbField]: url, updatedAt: new Date() },

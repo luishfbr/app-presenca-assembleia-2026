@@ -3,8 +3,8 @@ import type { Guest } from "@/db/schema/presence/guests";
 import type { User } from "@/server/auth";
 
 export type CheckinWithRelations = Checkin & {
-  guest: Guest;
-  user: User;
+  guest: Guest | null;
+  user: User | null;
 };
 
 export type GetCheckinsResponse = {

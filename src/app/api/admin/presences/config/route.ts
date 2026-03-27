@@ -11,9 +11,10 @@ export async function GET() {
     });
 
     if (!config) {
+      const now = new Date();
       [config] = await db
         .insert(siteConfig)
-        .values({ id: "default" })
+        .values({ id: "default", createdAt: now, updatedAt: now })
         .returning();
     }
 
@@ -42,9 +43,10 @@ export async function PATCH(req: NextRequest) {
       );
     }
 
+    const now = new Date();
     const [updated] = await db
       .insert(siteConfig)
-      .values({ id: "default", ...parsed.data })
+      .values({ id: "default", ...parsed.data, createdAt: now, updatedAt: now })
       .onConflictDoUpdate({
         target: siteConfig.id,
         set: { ...parsed.data, updatedAt: new Date() },

@@ -19,7 +19,7 @@ export const checkins = pgTable("checkins", {
     .references(() => events.id, { onDelete: "cascade" })
     .notNull(),
   guestId: text("guest_id")
-    .references(() => guests.id)
+    .references(() => guests.id, { onDelete: "cascade" })
     .notNull(),
   userId: text("user_id")
     .references(() => users.id)

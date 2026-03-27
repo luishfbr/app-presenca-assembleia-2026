@@ -1,6 +1,5 @@
 import { db } from "@/db/client";
 import { events } from "@/db/schema/presence/events";
-import { generateSlug } from "@/lib/utils";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";

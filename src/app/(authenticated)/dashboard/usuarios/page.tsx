@@ -22,7 +22,7 @@ export default function Page() {
     if (currentPage > 1 && users?.length === 0 && !isPending) {
       setCurrentPage(currentPage - 1);
     }
-  }, [users?.length, currentPage, isPending]);
+  }, [users?.length, currentPage, isPending, setCurrentPage]);
 
   return (
     <div className="flex flex-col gap-4 h-full">

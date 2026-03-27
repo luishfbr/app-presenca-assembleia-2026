@@ -19,7 +19,7 @@ export default function CheckinSelectorPage() {
     if (!isPending && events.length === 1) {
       router.replace(`/checkin/${events[0].slug}`);
     }
-  }, [isPending, events]);
+  }, [isPending, events, router]);
 
   if (isPending) return <CustomLoadingComponent imageSrc={loadingImageSrc} />;
 

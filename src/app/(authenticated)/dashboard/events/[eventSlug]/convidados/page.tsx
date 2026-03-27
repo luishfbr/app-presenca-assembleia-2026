@@ -35,8 +35,6 @@ export default function EventGuestsPage({
 
   const totalPages = data ? Math.ceil(data.pagination.total / LIMIT) : 1;
 
-  console.log(data?.pagination);
-
   return (
     <div className="flex flex-col gap-4 h-full">
       <div className="flex flex-row items-center justify-between">

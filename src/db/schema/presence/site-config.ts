@@ -16,7 +16,7 @@ export const siteConfig = pgTable("site_config", {
   backgroundColorHex: text("background_color_hex"),
   loadingImageUrl: text("loading_image_url"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().$onUpdate(() => new Date()),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdate(() => new Date()),
 });
 
 export const selectSiteConfigSchema = createSelectSchema(siteConfig);

@@ -15,7 +15,7 @@ const passwordSchema = z
 
 export const loginSchema = z.object({
   username: usernameSchema,
-  password: passwordSchema,
+  password: z.string().min(1, "Senha obrigatória"),
 });
 
 export type LoginType = z.infer<typeof loginSchema>;

@@ -7,7 +7,11 @@ export function cn(...inputs: ClassValue[]): string {
 
 /** Mascara os 9 primeiros dígitos do CPF, exibindo apenas os 2 dígitos verificadores. */
 export function maskDocument(doc: string): string {
-  return doc.replace(/^\d{3}\.\d{3}\.\d{3}-/, "***.***.***-");
+  const digits = doc.replace(/\D/g, "");
+  if (digits.length === 11) {
+    return `***.***.*${digits.slice(8, 9)}-${digits.slice(9)}`;
+  }
+  return doc.replace(/^.{9}/, (m) => "*".repeat(m.length));
 }
 
 /** Gera um slug URL-safe a partir de um nome. */

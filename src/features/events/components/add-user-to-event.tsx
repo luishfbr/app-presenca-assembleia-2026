@@ -27,7 +27,7 @@ export const AddUserToEvent = ({ eventSlug }: { eventSlug: string }) => {
   const { mutateAsync, isPending } = useAddUserToEvent(eventSlug);
 
   const { data, isFetching } = useQuery({
-    queryKey: ["all-users-for-event"],
+    queryKey: ["all-users-for-event", eventSlug],
     queryFn: () =>
       authClient.admin.listUsers({ query: { limit: 100, offset: 0 } }),
   });

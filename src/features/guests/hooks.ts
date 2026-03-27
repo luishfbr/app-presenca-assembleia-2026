@@ -1,11 +1,11 @@
 "use client";
 
-import type { GuestUpdate } from "@/db/schema/presence/guests";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 import { guestsApi } from "./api";
 import type { ImportGuestsResponse, ParsedGuestRow } from "./types";
+import type { UpdateGuestType } from "./validations";
 
 export function useGuests(params: {
   eventSlug: string;
@@ -42,7 +42,7 @@ export function useCreateGuest() {
 export function useUpdateGuest() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, body }: { id: string; body: GuestUpdate }) =>
+    mutationFn: ({ id, body }: { id: string; body: UpdateGuestType }) =>
       guestsApi.update(id, body),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["guests"] });

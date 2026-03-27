@@ -39,11 +39,8 @@ export const UsersTable = () => {
           <TableHead>Criado em</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {!isUpdatingUser &&
-          !isDeletingUser &&
-          !isPending &&
-          users?.map((user) => (
+      <TableBody className={isUpdatingUser || isDeletingUser || isPending ? "opacity-50 pointer-events-none" : ""}>
+        {users?.map((user) => (
             <TableRow key={user.id}>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.username ?? "N/A"}</TableCell>
