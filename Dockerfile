@@ -7,7 +7,18 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
-# ── 2. Build ─────────────────────────────────────────────────────────────────
+# ── 2. Development runner ─────────────────────────────────────────────────────
+FROM base AS dev
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+ENV NODE_ENV=development
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+CMD ["pnpm", "dev"]
+
+# ── 3. Build ─────────────────────────────────────────────────────────────────
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -19,14 +30,14 @@ ENV ENCRYPTION_KEY=0000000000000000000000000000000000000000000000000000000000000
 ENV HMAC_KEY=0000000000000000000000000000000000000000000000000000000000000000
 RUN pnpm build
 
-# ── 3. Migrator (roda migrations + seed, depois encerra) ─────────────────────
+# ── 4. Migrator (roda migrations + seed, depois encerra) ─────────────────────
 FROM base AS migrator
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 CMD ["sh", "-c", "pnpm drizzle-kit migrate && (pnpm seed || echo 'Seed ignorado: admin já existe')"]
 
-# ── 4. Production runner ──────────────────────────────────────────────────────
+# ── 5. Production runner ──────────────────────────────────────────────────────
 FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
