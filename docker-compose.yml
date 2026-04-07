@@ -1,11 +1,11 @@
 services:
   db:
-    image: postgres:16-alpine
+    image: postgres:17
     container_name: presenca-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgresql
-      POSTGRES_PASSWORD: "sicoob@3178"
+      POSTGRES_PASSWORD: "admin"
       POSTGRES_DB: assembleia
     ports:
       - "5432:5432"
@@ -21,21 +21,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      target: dev
+      target: migrator
     container_name: presenca-migrate
     restart: "no"
     env_file:
       - .env
     environment:
-      DATABASE_URL: "postgresql://postgresql:sicoob%403178@db:5432/assembleia?sslmode=disable"
+      DATABASE_URL: "postgresql://postgresql:admin@db:5432/assembleia"
       DATABASE_SSL: "false"
     depends_on:
       db:
         condition: service_healthy
-    command: >
-      sh -c "pnpm drizzle-kit generate &&
-             pnpm drizzle-kit migrate &&
-             (pnpm seed || echo 'Seed ignorado: admin já existe')"
 
   app:
     build:
@@ -49,7 +45,7 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: "postgresql://postgresql:sicoob%403178@db:5432/assembleia?sslmode=disable"
+      DATABASE_URL: "postgresql://postgresql:admin@db:5432/assembleia"
       DATABASE_SSL: "false"
     volumes:
       - .:/app

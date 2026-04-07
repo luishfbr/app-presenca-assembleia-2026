@@ -35,7 +35,7 @@ FROM base AS migrator
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-CMD ["sh", "-c", "pnpm drizzle-kit migrate && (pnpm seed || echo 'Seed ignorado: admin já existe')"]
+CMD ["sh", "-c", "pnpm drizzle-kit generate && pnpm drizzle-kit migrate && (pnpm seed || echo 'Seed ignorado: admin já existe')"]
 
 # ── 5. Production runner ──────────────────────────────────────────────────────
 FROM base AS runner
